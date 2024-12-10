@@ -1,22 +1,25 @@
 import React from 'react';  
-import Header from './components/Header';  
-import AboutUs from './components/AboutUs';  
-import Events from './components/Events';  
-import SignUp from './components/SignUp';  
-import ContactUs from './components/ContactUs';  
-import Footer from './components/Footer';  
-import WeatherDashboard from './components/WeatherDashboard';  
+import Header from './Header';  
+import AboutUs from './AboutUs';  
+import Events from './Events';  
+import SignUp from './SignUp';  
+import ContactUs from './ContactUs';  
+import Footer from './Footer';  
+import WeatherDashboard from './WeatherDashboard';  
+import ErrorBoundary from './ErrorBoundary';  
   
 function App() {  
   return (  
    <div>  
-    <Header />  
-    <AboutUs />  
-    <Events />  
-    <SignUp />  
-    <ContactUs />  
-    <WeatherDashboard />  
-    <Footer />  
+    <ErrorBoundary>  
+      <Header />  
+      <AboutUs />  
+      <Events />  
+      <SignUp />  
+      <ContactUs />  
+      <WeatherDashboard />  
+      <Footer />  
+    </ErrorBoundary>  
    </div>  
   );  
 }  

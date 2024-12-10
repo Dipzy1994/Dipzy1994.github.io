@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header'; 
 import AboutUs from '../components/AboutUs';  
 import Events from '../components/Events';  
-import SignUp from '../components/SignUp';  
+import Signup from '../components/Signup';
 import ContactUs from '../components/ContactUs';  
 import Footer from '../components/Footer';  
 import WeatherDashboard from '../components/WeatherDashboard';  

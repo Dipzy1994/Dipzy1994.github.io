@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 module.exports = {
   mode: 'production',
@@ -25,11 +23,14 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       }
     ]
-
   },
   resolve: {
     extensions: ['.js', '.jsx']
   },
- 
-};
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 
+};

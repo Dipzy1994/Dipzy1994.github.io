@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from './shared/Carousel';
-import WeatherDashboard from '../WeatherDashboard';
+import WeatherDashboard from './WeatherDashboard';
 
 function Home() {
   return (

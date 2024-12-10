@@ -1,7 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { NavMenu, Footer, LoadingSpinner } from './components/SharedComponents';
-
 const Home = lazy(() => import('./components/Home'));
 const About = lazy(() => import('./components/About'));
 const Contact = lazy(() => import('./components/Contact'));
@@ -27,5 +24,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

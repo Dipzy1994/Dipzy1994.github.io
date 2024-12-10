@@ -4,7 +4,17 @@ function WeatherDashboard() {
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    // Fetch weather data here
+    const fetchWeatherData = async () => {
+      try {
+        const response = await fetch('https://api.example.com/weather');
+        const data = await response.json();
+        setWeatherData(data);
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    };
+
+    fetchWeatherData();
   }, []);
 
   if (!weatherData) return <div>Loading weather data...</div>;
@@ -16,5 +26,6 @@ function WeatherDashboard() {
     </div>
   );
 }
+
 
 export default WeatherDashboard;

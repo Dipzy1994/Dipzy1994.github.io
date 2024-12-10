@@ -11,8 +11,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log('Error:', error);
-    console.log('Error Info:', errorInfo);
+    console.log(error, errorInfo);
   }
 
   render() {
@@ -24,5 +23,4 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default ErrorBoundary;npm run build
-serve -s build
+export default ErrorBoundary;

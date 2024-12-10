@@ -1,12 +1,12 @@
-import React, { Suspense, lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavMenu from './components/NavMenu';
+import NavMenu from '../components/NavMenu';
 
-const Home = lazy(() => import('./components/Home'));
-const About = lazy(() => import('./components/About'));
-const Services = lazy(() => import('./components/Services'));
-const Contact = lazy(() => import('./components/Contact'));
-const SignUp = lazy(() => import('./components/SignUp'));
+const Home = lazy(() => import('../components/Home'));
+const About = lazy(() => import('../components/About'));
+const Services = lazy(() => import('../components/Services'));
+const Contact = lazy(() => import('../components/Contact'));
+const SignUp = lazy(() => import('../components/SignUp'));
 
 function App() {
   return (

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkyour_project_name=self.webpackChunkyour_project_name||[]).push([[523],{904:(e,t,n)=>{n.r(t),n.d(t,{default:()=>c});var a=n(540);const c=function(){return a.createElement("div",null,a.createElement("h1",null,"Contact Us"),a.createElement("p",null,"This is the Contact page of our application."))}}}]);

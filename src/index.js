@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css'; // Ensure this file exists in the src directory
-import App from './App';
+import './index.css';
+import App from './containers/App'; // Ensure this path is correct
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

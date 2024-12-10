@@ -1,8 +1,8 @@
-const path = require('path');
 
-// Set the mode to 'production' or 'development or none'
+
+const path = require('path');
 module.exports = {
-  mode: 'production', 
+  mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -11,28 +11,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        },
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-    ],
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    compress: true,
-    port: 9000,
-  },
+ 
 };
+

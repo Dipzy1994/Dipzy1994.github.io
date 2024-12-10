@@ -1,30 +1,31 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Header from './components/Header';
-import NavMenu from './components/NavMenu';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import About from './components/About';
-import Contact from './components/Contact';
-import Events from './components/Events';
-import Teams from './components/Teams';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { NavMenu, Footer, LoadingSpinner } from './components/SharedComponents';
 
-export default function App() {
+const Home = lazy(() => import('./components/Home'));
+const About = lazy(() => import('./components/About'));
+const Contact = lazy(() => import('./components/Contact'));
+const Teams = lazy(() => import('./components/Teams'));
+const Events = lazy(() => import('./components/Events'));
+
+function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
+    <Router>
+      <div>
         <NavMenu />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/events" component={Events} />
-          <Route path="/teams" component={Teams} />
-        </Switch>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/teams" component={Teams} />
+            <Route path="/events" component={Events} />
+          </Switch>
+        </Suspense>
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
+export default App;

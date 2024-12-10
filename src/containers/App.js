@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import NavMenu from '../components/NavMenu';
+import NavMenu from '../components/layout/NavMenu';
 
 const Home = lazy(() => import('../components/Home'));
 const About = lazy(() => import('../components/About'));

@@ -72,3 +72,27 @@
 .cta p {
   margin-bottom: 1.5rem;
 }
+.homeContainer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.ctaButtons {
+  margin-top: 2rem;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #0056b3;
+}

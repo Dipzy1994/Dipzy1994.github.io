@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Signup.module.css';
 
-const Signup = () => {
+const SignUp = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -134,5 +134,5 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;
 

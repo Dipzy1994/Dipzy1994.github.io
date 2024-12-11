@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SignUp from './SignUp';
 import CustomCarousel from './shared/Carousel';
 import Button from './shared/Button';
 import styles from '../styles/Home.module.css';
@@ -16,7 +17,9 @@ function Home() {
       <section className={styles.hero}>
         <h1>Welcome to MacArthur Ballers</h1>
         <p>Empowering athletes, building champions, and fostering community through sports.</p>
-        <Button text="Join Us" onClick={() => {/* Handle join action */}} />
+        <Link to="/signup">
+          <Button text="Join Us" />
+        </Link>
       </section>
       <CustomCarousel />
 
@@ -55,11 +58,14 @@ function Home() {
       <section className={styles.cta}>
         <h2>Ready to Take Your Game to the Next Level?</h2>
         <p>Join MacArthur Ballers today and start your journey to becoming a champion!</p>
-        <Button text="Sign Up Now" onClick={() => {/* Navigate to sign up page */}} />
+        <Link to="/signup">
+          <Button text="Sign Up Now" />
+        </Link>
       </section>
     </div>
   );
 }
 
 export default Home;
+
 

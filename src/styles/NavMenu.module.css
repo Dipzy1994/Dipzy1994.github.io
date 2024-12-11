@@ -1,78 +1,75 @@
 .navMenu {
-  background-color: #2c3e50;  /* Dark blue background */
-  padding: 15px 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Subtle shadow for depth */
+  background-color: #333;
+  padding: 1rem;
 }
 
-.navMenu ul {
+.navList {
   list-style-type: none;
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center;  /* Center the menu items */
 }
 
-.navMenu li {
-  position: relative;
-  margin: 0 15px;  /* Even spacing between items */
+.navList li {
+  margin-right: 1rem;
 }
 
-.navMenu a {
+.navList li a {
+  color: white;
   text-decoration: none;
-  color: #ecf0f1;  /* Light color for better contrast */
-  font-weight: 600;  /* Make the text slightly bolder */
-  font-size: 16px;
-  padding: 10px 15px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-.navMenu a:hover {
-  background-color: #34495e;  /* Slightly lighter on hover */
+.navList li a:hover {
+  color: #ffd700; /* Change to your preferred hover color */
 }
 
-.dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #34495e;  /* Match the hover color of main menu */
-  min-width: 150px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 0 0 4px 4px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.navMenu li:hover .dropdown {
-  opacity: 1;
-  visibility: visible;
-}
-
-.dropdown li {
-  margin: 0;
-}
-
-.dropdown a {
-  padding: 12px 16px;
-  display: block;
-  color: #ecf0f1;
-}
-
-.dropdown a:hover {
-  background-color: #2c3e50;  /* Darker on hover for dropdown items */
-}
-
-.dropdownTrigger {
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
+  padding: 0;
 }
 
-.dropdownTrigger::after {
-  content: '▼';
-  font-size: 12px;
-  margin-left: 5px;
+.hamburgerLine {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navList {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .navList.open {
+    display: flex;
+  }
+
+  .navList li {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .navList li:last-child {
+    margin-bottom: 0;
+  }
 }
 

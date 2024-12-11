@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import App from './containers/App';
+import App from './containers/App';  // Make sure this path is correct
 
 // Mock the components
 jest.mock('./components/layout/NavMenu', () => () => <div data-testid="nav-menu">NavMenu</div>);
@@ -16,12 +15,13 @@ jest.mock('./components/Contact', () => () => <div>Contact</div>);
 jest.mock('./components/Teams', () => () => <div>Teams</div>);
 jest.mock('./components/Events', () => () => <div>Events</div>);
 
+// Mock react-router-dom
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  BrowserRouter: ({ children }) => <div>{children}</div>,
+}));
 test('renders NavMenu component', () => {
-  render(
-    <Router>
-      <App />
-    </Router>
-  );
+  render(<App />);
   const navElement = screen.getByTestId('nav-menu');
   expect(navElement).toBeInTheDocument();
 });

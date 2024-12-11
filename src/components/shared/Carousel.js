@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';  
-  
+import React, { useState, useEffect } from 'react';
+import { Carousel as ResponsiveCarousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 function Carousel() {
   const [slideIndex, setSlideIndex] = useState(0);
   const slides = [
@@ -15,36 +17,25 @@ function Carousel() {
     return () => clearInterval(intervalId);
   }, [slides.length]);
 
-  const prevSlide = () => {
-    setSlideIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
-
-  const nextSlide = () => {
-    setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
-  };
-
   return (
-    <div className="carousel">
-      <div className="carousel-inner">
-        {slides.map((slide, index) => (
-          <img
-            key={index}
-            src={slide.image}
-            alt={slide.alt}
-            className={`carousel-item ${index === slideIndex ? 'active' : ''}`}
-          />
-        ))}
-      </div>
-      <button className="carousel-control prev" onClick={prevSlide}>
-        &#10094;
-      </button>
-      <button className="carousel-control next" onClick={nextSlide}>
-        &#10095;
-      </button>
-    </div>
+    <ResponsiveCarousel
+      selectedItem={slideIndex}
+      onChange={setSlideIndex}
+      showArrows={true}
+      showThumbs={false}
+      infiniteLoop={true}
+      autoPlay={true}
+      interval={2000}
+    >
+      {slides.map((slide, index) => (
+        <div key={index}>
+          <img src={slide.image} alt={slide.alt} />
+          <p className="legend">{slide.alt}</p>
+        </div>
+      ))}
+    </ResponsiveCarousel>
   );
 }
 
-  
 export default Carousel;
 

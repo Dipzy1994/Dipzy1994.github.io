@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ContactUs.css';
+import Button from './shared/Button';
 
 const ContactUs = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,9 +8,16 @@ const ContactUs = () => {
         email: '',
         query: ''
     });
+    const [errors, setErrors] = useState({});
 
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
+    const validateForm = () => {
+        let tempErrors = {};
+        if (!formData.name.trim()) tempErrors.name = "Name is required";
+        if (!formData.email.trim()) tempErrors.email = "Email is required";
+        else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = "Email is invalid";
+        if (!formData.query.trim()) tempErrors.query = "Query is required";
+        setErrors(tempErrors);
+        return Object.keys(tempErrors).length === 0;
     };
 
     const handleChange = (e) => {
@@ -21,16 +28,20 @@ const ContactUs = () => {
         });
     };
 
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log(formData);
-        setFormData({
-            name: '',
-            email: '',
-            query: ''
-        });
-        setIsOpen(false);
+        if (validateForm()) {
+            console.log(formData);
+            setFormData({
+                name: '',
+                email: '',
+                query: ''
+            });
+            setIsOpen(false);
+        }
     };
 
     return (
@@ -48,8 +59,8 @@ const ContactUs = () => {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    required
                                 />
+                                {errors.name && <span className="error">{errors.name}</span>}
                             </label>
                             <label>
                                 Email:
@@ -58,8 +69,8 @@ const ContactUs = () => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    required
                                 />
+                                {errors.email && <span className="error">{errors.email}</span>}
                             </label>
                             <label>
                                 Query:
@@ -67,11 +78,11 @@ const ContactUs = () => {
                                     name="query"
                                     value={formData.query}
                                     onChange={handleChange}
-                                    required
                                 />
+                                {errors.query && <span className="error">{errors.query}</span>}
                             </label>
-                            <button type="submit">Submit</button>
-                            <button type="button" onClick={togglePopup}>Close</button>
+                            <Button text="Submit" onClick={handleSubmit} />
+                            <Button text="Close" onClick={togglePopup} />
                         </form>
                     </div>
                 </div>

@@ -1,57 +1,60 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NavMenu from '../components/layout/NavMenu';
+import ErrorBoundary from '../components/ErrorBoundary';
+import LoadingSpinner from '../components/LoadingSpinner';
+import '../styles/styles.css'; // Make sure to import your main CSS file
 
 const Home = lazy(() => import('../components/Home'));
 const About = lazy(() => import('../components/About'));
 const Services = lazy(() => import('../components/Services'));
 const Contact = lazy(() => import('../components/Contact'));
-const SignUp = lazy(() => import('../components/SignUp'));
+const SignUp = lazy(() => import('../components/Signup'));
 const SignIn = lazy(() => import('../components/SignIn'));
-
+const Teams = lazy(() => import('../components/Teams'));
+const Events = lazy(() => import('../components/Events'));
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSignIn = (token) => {
-    // Store the token in localStorage or a secure storage method
     localStorage.setItem('authToken', token);
     setIsAuthenticated(true);
   };
 
   const handleSignOut = () => {
-    // Remove the token from storage
     localStorage.removeItem('authToken');
     setIsAuthenticated(false);
   };
+
   return (
     <Router>
-      <div>
-        <NavMenu isAuthenticated={isAuthenticated} onSignOut={handleSignOut} />
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/services" component={Services} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/signup" component={SignUp} />
-            <Route 
-              path="/signin" 
-              render={(props) => 
-                isAuthenticated ? (
-                  <Redirect to="/" />
-                ) : (
-                  <SignIn {...props} onSignIn={handleSignIn} />
-                )
-              } 
-            />
-            {/* Add more protected routes here */}
-          </Switch>
-        </Suspense>
-      </div>
+      <ErrorBoundary>
+        <div>
+          <NavMenu isAuthenticated={isAuthenticated} onSignOut={handleSignOut} />
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/teams" element={<Teams />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route 
+                path="/signin" 
+                element={
+                  isAuthenticated ? 
+                    <Navigate to="/" replace /> : 
+                    <SignIn onSignIn={handleSignIn} />
+                } 
+              />
+            </Routes>
+          </Suspense>
+        </div>
+      </ErrorBoundary>
     </Router>
   );
 }
 
+
 export default App;
-
-

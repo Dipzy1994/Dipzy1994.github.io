@@ -5,7 +5,7 @@ import WeatherDashboard from './WeatherDashboard';
 function Home() {
   return (
     <div className="home">
-      <h1>Welcome to MacArthur Ballers</h1>
+      <h1>futuresports is a community basketball club dedicated to promoting the sport and fostering talent.</h1>
       <Carousel />
       <WeatherDashboard />
     </div>

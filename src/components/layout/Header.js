@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/image1.jpg';
 
 function Header() {
   return (
     <header>
       <img 
-        src={`${process.env.PUBLIC_URL}/images/image1.jpg`} 
+        src={logo}
         alt="MacArthur Ballers Logo" 
         className="logo"
       />

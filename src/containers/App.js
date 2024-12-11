@@ -18,7 +18,6 @@
  import Signup from '../components/Signup';
  import ErrorBoundary from '../components/ErrorBoundary';
  import SearchBar from '../components/shared/SearchBar';
-
  function App() {
    useEffect(() => {
      // Example of using effect for initial setup or data fetching
@@ -29,7 +28,6 @@
      // Implement search functionality here
      console.log(`Searching for: ${term}`);
    };
-
    return (
      <Router>
        <ErrorBoundary>
@@ -63,4 +61,5 @@
  }
 
  export default App;
+
 

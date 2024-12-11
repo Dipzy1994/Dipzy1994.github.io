@@ -1,52 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/WeatherDashboard.css';  // Keep this line as is
+import '../styles/WeatherDashboard.css';
 
-function WeatherDashboard() {  
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
+const WeatherDashboard = () => {
+    const [weatherData, setWeatherData] = useState(null);
 
-  useEffect(() => {  
-    const apikey = process.env.REACT_APP_WEATHER_API_KEY;
-    const city = 'Sydney';
-    const url = `http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}&aqi=no`;
+    useEffect(() => {
+        // Fetch weather data here
+        // For this example, we'll use dummy data
+        const dummyData = {
+            temperature: 22,
+            humidity: 60,
+            windSpeed: 10,
+            description: 'Partly cloudy'
+        };
+        setWeatherData(dummyData);
+    }, []);
 
-    fetch(url)  
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Weather data fetch failed');
-        }
-        return response.json();
-      })  
-      .then((data) => setWeatherData(data))
-      .catch((err) => {
-        console.error("Error fetching weather data:", err);
-        setError(err.message);
-      });
-  }, []);  
+    if (!weatherData) {
+        return <div>Loading weather data...</div>;
+    }
 
-  if (error) {
-    return <div className="weather-dashboard error">Error: {error}</div>;
-  }
-
-  if (!weatherData) {
-    return <div className="weather-dashboard loading">Loading...</div>;
-  }
-
-  const { location, current } = weatherData;
-
-  return (  
-    <div className="weather-dashboard">
-      <h2>Weather Dashboard</h2>
-      <div className="weather-info">
-        <p><strong>City:</strong> {location.name}</p>
-        <p><strong>Temperature:</strong> {current.temp_c}°C</p>
-        <p><strong>Condition:</strong> {current.condition.text}</p>
-        <p><strong>Humidity:</strong> {current.humidity}%</p>
-        <p><strong>Wind Speed:</strong> {current.wind_kph} km/h</p>
-      </div>
-    </div>
-  );  
-}
+    return (
+        <div className="weather-dashboard">
+            <h2>Weather Dashboard</h2>
+            <div className="weather-info">
+                <div className="weather-item">
+                    <h3>Temperature</h3>
+                    <p>{weatherData.temperature}°C</p>
+                </div>
+                <div className="weather-item">
+                    <h3>Humidity</h3>
+                    <p>{weatherData.humidity}%</p>
+                </div>
+                <div className="weather-item">
+                    <h3>Wind Speed</h3>
+                    <p>{weatherData.windSpeed} km/h</p>
+                </div>
+                <div className="weather-item">
+                    <h3>Description</h3>
+                    <p>{weatherData.description}</p>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default WeatherDashboard;
+
 

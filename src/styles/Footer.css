@@ -1,0 +1,113 @@
+.footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px 0 10px; /* Reduced padding */
+  text-align: center;
+  position: fixed; /* Fixed position */
+  bottom: 0; /* Stick to bottom */
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 150px; /* Reduced min-width */
+  margin-bottom: 10px; /* Reduced margin */
+  padding: 0 10px; /* Reduced padding */
+}
+
+.footer-section h3 {
+  color: #3498db;
+  margin-bottom: 10px; /* Reduced margin */
+  font-size: 1em; /* Smaller font size */
+}
+
+.footer-section p {
+  line-height: 1.4; /* Reduced line height */
+  font-size: 0.9em; /* Smaller font size */
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px; /* Reduced margin */
+}
+
+.footer-section a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9em; /* Smaller font size */
+}
+
+.footer-section a:hover {
+  color: #3498db;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Reduced gap */
+  margin-top: 10px; /* Reduced margin */
+}
+
+.social-icons a {
+  color: #ecf0f1;
+  font-size: 18px; /* Smaller icon size */
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #3498db;
+}
+
+.footer-bottom {
+  margin-top: 15px; /* Reduced margin */
+  padding-top: 10px; /* Reduced padding */
+  border-top: 1px solid #34495e;
+  font-size: 0.8em; /* Smaller font size */
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px; /* Reduced margin */
+  }
+}
+
+/* Add this to ensure content above the footer is not hidden */
+body {
+  margin-bottom: 150px; /* Adjust this value based on your footer's height */
+}
+
+/* If using a main content wrapper, you can add this instead of the body margin */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin-bottom: 150px; /* Adjust this value based on your footer's height */
+}
+

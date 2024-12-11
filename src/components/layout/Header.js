@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <header>
-      <img src="/images/image1.jpg" alt="MacArthur Ballers Logo" />
+      <img 
+        src={`${process.env.PUBLIC_URL}/images/image1.jpg`} 
+        alt="MacArthur Ballers Logo" 
+        className="logo"
+      />
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>

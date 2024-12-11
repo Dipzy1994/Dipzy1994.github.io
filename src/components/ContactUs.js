@@ -46,7 +46,11 @@ const ContactUs = () => {
 
     return (
         <div>
-            <button onClick={togglePopup}>Contact Us</button>
+            <Button 
+                text="Contact Us" 
+                onClick={togglePopup}
+                className="btn-secondary"
+            />
             {isOpen && (
                 <div className="popup">
                     <div className="popup-inner">
@@ -81,8 +85,17 @@ const ContactUs = () => {
                                 />
                                 {errors.query && <span className="error">{errors.query}</span>}
                             </label>
-                            <Button text="Submit" onClick={handleSubmit} />
-                            <Button text="Close" onClick={togglePopup} />
+                            <Button 
+                                text="Submit" 
+                                onClick={handleSubmit}
+                                type="submit"
+                                className="btn-primary"
+                            />
+                            <Button 
+                                text="Close" 
+                                onClick={togglePopup}
+                                className="btn-secondary"
+                            />
                         </form>
                     </div>
                 </div>

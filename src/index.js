@@ -1,20 +1,13 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import './styles/index.css';
+import './styles/App.css';
+import './styles/styles.css';  // Add this line if you have a styles.css file
 import App from './containers/App';
-import './styles/styles.css';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// import reportWebVitals from './reportWebVitals';
-
-const root = createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-
-// If you're not using reportWebVitals, you can remove or comment out this line
-// reportWebVitals();
-

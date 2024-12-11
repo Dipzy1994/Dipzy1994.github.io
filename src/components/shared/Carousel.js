@@ -1,44 +1,34 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import WeatherDashboard from '../WeatherDashboard';
+import styles from '../../styles/Carousel.module.css';
 
-// Import the images from the assets folder
-import image1 from '../../assets/image1.jpg';
-import image2 from '../../assets/image2.jpg';
-import image3 from '../../assets/image3.jpg';
-
-function CustomCarousel() {
+const CarouselComponent = () => {
   return (
-    <div className="carousel-container">
+    <div className={styles.carouselWrapper}>
       <Carousel
-        autoPlay
-        interval={5000}
-        infiniteLoop
+        showArrows={true}
+        infiniteLoop={true}
         showThumbs={false}
         showStatus={false}
-        emulateTouch
-        swipeable
+        autoPlay={true}
+        interval={6100}
       >
         <div>
-          <img src={image1} alt="Image 1" />
-          <p className="legend">Image 1</p>
+          <img src="/images/image1.jpg" alt="Sports event" />
+          <p className="legend">Exciting Sports Event</p>
         </div>
         <div>
-          <img src={image2} alt="Image 2" />
-          <p className="legend">Image 2</p>
+          <img src="/images/image2.jpg" alt="Team celebration" />
+          <p className="legend">Team Celebration</p>
         </div>
         <div>
-          <img src={image3} alt="Image 3" />
-          <p className="legend">Image 3</p>
-        </div>
-        <div className="weather-dashboard">
-          <WeatherDashboard />
+          <img src="/images/image3.jpg" alt="Stadium view" />
+          <p className="legend">Amazing Stadium View</p>
         </div>
       </Carousel>
     </div>
   );
-}
+};
 
-export default CustomCarousel;
-
+export default CarouselComponent;

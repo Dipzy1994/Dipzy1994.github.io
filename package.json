@@ -2,7 +2,7 @@
   "name": "future-sports",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://Dipzy1994.github.io/REPO",
+  "homepage": "https://Dipzy1994.github.io/",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "future-sports": "file:",

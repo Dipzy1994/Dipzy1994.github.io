@@ -9,7 +9,7 @@
  import Contact from '../components/Contact';
  import WeatherDashboard from '../components/WeatherDashboard';
  import Services from '../components/Services';
- import SignUp from '../components/SignUp'; // Updated import
+ import SignUp from '../components/Signup'; // Updated import
  import SearchResults from '../components/SearchResults';
  import ErrorBoundary from '../components/ErrorBoundary';
 

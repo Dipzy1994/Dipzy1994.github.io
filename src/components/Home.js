@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignUp from './SignUp';
+import SignUp from './Signup';
 import CustomCarousel from './shared/Carousel';
 import Button from './shared/Button';
 import styles from '../styles/Home.module.css';

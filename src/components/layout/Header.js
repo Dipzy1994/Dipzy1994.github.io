@@ -1,26 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../assets/image1.jpg';
+import styles from '../../styles/Header.module.css';
+import logo from '../../assets/logo.png'; // Make sure to add your logo image to the assets folder
 
-function Header() {
+const Header = () => {
   return (
-    <header>
-      <img 
-        src={logo}
-        alt="MacArthur Ballers Logo" 
-        className="logo"
-      />
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/teams">Teams</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
-      </nav>
+    <header className={styles.header}>
+      <div className={styles.logoContainer}>
+        <img src={logo} alt="FutureSports Logo" className={styles.logo} />
+        <h1 className={styles.title}>FutureSports</h1>
+      </div>
     </header>
   );
-}
+};
 
 export default Header;
+
 

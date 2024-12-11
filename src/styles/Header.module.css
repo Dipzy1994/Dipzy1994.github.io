@@ -1,0 +1,58 @@
+.header {
+  background-color: #1a1a1a;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+
+.nav {
+  flex: 1 1 auto;
+}
+
+.nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.nav li {
+  margin: 0 1rem;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #007bff;
+}
+
+.signInContainer {
+  flex: 0 0 auto;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}

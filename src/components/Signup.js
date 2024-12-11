@@ -1,81 +1,138 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from '../styles/Signup.module.css';
 
 const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const validateForm = () => {
+    let tempErrors = {};
+    if (!formData.username.trim()) tempErrors.username = "Username is required";
+    if (!formData.email.trim()) {
+      tempErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      tempErrors.email = "Email is invalid";
+    }
+    if (!formData.password) {
+      tempErrors.password = "Password is required";
+    } else if (formData.password.length < 6) {
+      tempErrors.password = "Password must be at least 6 characters";
+    }
+    if (formData.password !== formData.confirmPassword) {
+      tempErrors.confirmPassword = "Passwords do not match";
+    }
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-    } else {
-      // Call API to create new user
-      fetch('/api/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            // Redirect to login page or dashboard
-            window.location.href = '/login';
-          } else {
-            setError(data.error);
-          }
-        })
-        .catch((error) => setError(error.message));
+    if (validateForm()) {
+      setIsLoading(true);
+      try {
+        // In a real application, replace this with your actual API call
+        const response = await fetch('/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: formData.username,
+            email: formData.email,
+            password: formData.password
+          }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          // Signup successful
+          alert('Signup successful! Please log in.');
+          navigate('/login');
+        } else {
+          // Signup failed
+          setErrors({ api: data.message || 'Signup failed. Please try again.' });
+        }
+      } catch (error) {
+        setErrors({ api: 'An error occurred. Please try again later.' });
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
   return (
-    <div>
+    <div className={styles.signupContainer}>
       <h2>Sign up</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
+      <form onSubmit={handleSubmit} className={styles.signupForm}>
+        <div className={styles.formGroup}>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            className={errors.username ? styles.errorInput : ''}
           />
-        </label>
-        <br />
-        <label>
-          Email:
+          {errors.username && <span className={styles.errorText}>{errors.username}</span>}
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={errors.email ? styles.errorInput : ''}
           />
-        </label>
-        <br />
-        <label>
-          Password:
+          {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className={errors.password ? styles.errorInput : ''}
           />
-        </label>
-        <br />
-        <label>
-          Confirm Password:
+          {errors.password && <span className={styles.errorText}>{errors.password}</span>}
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="confirmPassword">Confirm Password:</label>
           <input
             type="password"
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            className={errors.confirmPassword ? styles.errorInput : ''}
           />
-        </label>
-        <br />
-        <button type="submit">Sign up</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+          {errors.confirmPassword && <span className={styles.errorText}>{errors.confirmPassword}</span>}
+        </div>
+        <button type="submit" className={styles.submitButton} disabled={isLoading}>
+          {isLoading ? 'Signing up...' : 'Sign up'}
+        </button>
+        {errors.api && <p className={styles.apiError}>{errors.api}</p>}
       </form>
     </div>
   );
 };
 
 export default Signup;
+

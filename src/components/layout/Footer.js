@@ -7,7 +7,7 @@ function Footer() {
     <footer>
       <div className="footer-content">
         <div className="footer-logo">
-          <img src="/logo.png" alt="FutureSports Logo" className="footer-logo-img" />
+          <img src="/src/assets/image1.jpg" alt="FutureSports Logo" className="footer-logo-img" />
         </div>
         <div className="footer-center">
           <div className="footer-section">

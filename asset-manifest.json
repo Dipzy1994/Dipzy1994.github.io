@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/REPO/static/css/main.eb983768.css",
+    "main.js": "/REPO/static/js/main.37579dd4.js",
+    "static/media/image2.jpg": "/REPO/static/media/image2.f693dbe06949461b1d47.jpg",
+    "static/media/image1.jpg": "/REPO/static/media/image1.f993d5568d8af18ac31b.jpg",
+    "static/media/image3.jpg": "/REPO/static/media/image3.dd53c777a68d2f57f6b9.jpg",
+    "index.html": "/REPO/index.html",
+    "main.eb983768.css.map": "/REPO/static/css/main.eb983768.css.map",
+    "main.37579dd4.js.map": "/REPO/static/js/main.37579dd4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb983768.css",
+    "static/js/main.37579dd4.js"
+  ]
+}
